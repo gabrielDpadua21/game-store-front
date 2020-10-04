@@ -1,0 +1,75 @@
+#home .header-home {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 200px;
+}
+
+#home .header-home .nav-home a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 3px solid var(--color-light-medium-blue);
+    padding: 8px 60px;
+    border-radius: 10px;
+    color: var(--color-light-medium-blue);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+#home .header-home .nav-home a img {
+    width: 40px;
+    height: 40px;
+    padding-right: 10px;
+}
+
+#home .main-home {
+    max-width: 50%;
+}
+
+#home .main-home h1 {
+    padding-bottom: 40px;
+    font-size: 4rem;
+}
+
+#home .main-home h5 {
+    padding-bottom: 40px;
+    font-size: 2rem;
+}
+
+#home .main-home .btn-registre {
+    background-color: var(--color-light-medium-blue);
+    padding: 20px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    max-width: 350px;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+#home .main-home .btn-registre .btn-icon {
+    position: absolute;
+    background-color: var(--color-light-blue);
+    width: 80px;
+    height: 100%;
+    left: 0;
+    border-radius: 10px 0 0 10px;
+}
+
+#home .main-home .btn-registre .btn-icon img {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 14px;
+    left: 20px;
+}
+
+#home .main-home .btn-registre .btn-text {
+    padding-left: 75px;
+    color: var(--color-white);
+    font-weight: 700;
+}

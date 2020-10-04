@@ -1,0 +1,24 @@
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.header .nav-home a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    color: var(--color-light-medium-blue);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.header .nav-home a img {
+    width: 30px;
+    height: 30px;
+    padding-right: 10px;
+}
