@@ -24,7 +24,7 @@ function Home() {
             </header>
             <main className="main-home">
                 <h1 className="home-title">
-                    LUGAR ONDE OS MELHORES GAMES DA ATUALIDADE ESTÃO DISPONIVEIS A PREÇOS ACESSIVEIS
+                    LUGAR ONDE OS MELHORES GAMES DA ATUALIDADE ESTÃO DISPONIVEIS A PREÇOS ACESSÍVEIS
                 </h1>
                 <h5 className="home-subtitle">
                     Confira nosso catálogo e torne-se um PRO player dos melhores titulos da atualidade

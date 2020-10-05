@@ -11,18 +11,71 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 3px solid var(--color-light-medium-blue);
+    border: 1px solid var(--color-light-medium-blue); 
     padding: 8px 60px;
     border-radius: 10px;
     color: var(--color-light-medium-blue);
     text-decoration: none;
     font-weight: 700;
+    position: relative;
+    transition: all .35s;
 }
 
 #home .header-home .nav-home a img {
     width: 40px;
     height: 40px;
     padding-right: 10px;
+}
+
+#home .header-home .nav-home a:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+#home .header-home .nav-home a:hover {
+    border: none;
+}
+
+#home .header-home .nav-home a:active {
+    color: #000
+}
+
+#home .header-home .nav-home a:active:after {
+    background: transparent;
+}
+
+#home .header-home .nav-home a:hover:before {
+    opacity: 1;
+}
+
+#home .header-home .nav-home a:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
 }
 
 #home .main-home {
@@ -49,6 +102,7 @@
     max-width: 350px;
     text-decoration: none;
     border-radius: 10px;
+    transition: all 0.3s ease-in-out 0s;
 }
 
 #home .main-home .btn-registre .btn-icon {
@@ -58,6 +112,17 @@
     height: 100%;
     left: 0;
     border-radius: 10px 0 0 10px;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+#home .main-home .btn-registre:hover .btn-icon {
+    width: 100%;
+    border-radius: 10px;
+}
+
+#home .main-home .btn-registre .btn-icon:hover {
+    width: 100%;
+    border-radius: 10px;
 }
 
 #home .main-home .btn-registre .btn-icon img {
@@ -72,4 +137,6 @@
     padding-left: 75px;
     color: var(--color-white);
     font-weight: 700;
+    position: relative;
+    z-index: 2;
 }

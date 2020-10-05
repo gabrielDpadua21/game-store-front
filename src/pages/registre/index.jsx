@@ -47,7 +47,7 @@ function Registre() {
                         Cadastrar
                     </button>
 
-                    <Link>
+                    <Link to="/login">
                         Já possui uma conta?
                         <span>
                             Clique aqui para efetuar login!

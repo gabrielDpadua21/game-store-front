@@ -36,7 +36,7 @@ function Login() {
                   Esqueci minha senha
                 </Link>
 
-                <Link>
+                <Link to="/registre">
                   Não tem conta ? 
                   <span>
                      Crie uma conta agora GRATIS!
