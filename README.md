@@ -1,5 +1,7 @@
 ![](./src/assets/images/logos/logo-vertical.svg)
 
+![](./docs/store.gif)
+
 ## Technologies
 
 - React
