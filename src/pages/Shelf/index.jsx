@@ -11,24 +11,17 @@ import GridContainer from "../../components/Grid/GridContainer.js";
 import GridItem from "../../components/Grid/GridItem.js";
 import HeaderLinks from "../../components/HeaderLogged/HeaderLinks.js";
 import Parallax from "../../components/Parallax/Parallax.js";
-
-import profile from "../../assets/images/temp/profile.png";
+import CardShelf from "../../components/CardShelf/CardShelf.js";
 
 import styles from "../../assets/jss/material-kit-react/views/profilePage.js";
-
 
 import LogoHorizontal from '../../assets/images/logos/logo-horizontal.svg';
 
 const useStyles = makeStyles(styles);
 
-export default function ProfilePage(props) {
+export default function ShelfPage(props) {
   const classes = useStyles();
   const { ...rest } = props;
-  const imageClasses = classNames(
-    classes.imgRaised,
-    classes.imgRoundedCircle,
-    classes.imgFluid
-  );
   return (
     <div>
       <Header
@@ -47,25 +40,44 @@ export default function ProfilePage(props) {
         <div>
           <div className={classes.container}>
             <GridContainer justify="center">
-              <GridItem xs={12} sm={12} md={6}>
-                <div className={classes.profile}>
-                  <div>
-                    <img src={profile} alt="..." className={imageClasses} />
-                  </div>
-                  <div className={classes.name}>
-                    <h3 className={classes.title}>Gabriel D. Padua</h3>
-                    <h6>PRO Player</h6>
-                  </div>
-                </div>
+              <GridItem xs={12} sm={6} md={3}>
+                <CardShelf />
               </GridItem>
+              <GridItem xs={12} sm={6} md={3}>
+                <CardShelf />
+              </GridItem>
+              <GridItem xs={12} sm={6} md={3}>
+                <CardShelf />
+              </GridItem>
+              <GridItem xs={12} sm={6} md={3}>
+                <CardShelf />
+              </GridItem>
+              <GridItem xs={12} sm={6} md={3}>
+                <CardShelf />
+              </GridItem>
+              <GridItem xs={12} sm={6} md={3}>
+                <CardShelf />
+              </GridItem>
+              <GridItem xs={12} sm={6} md={3}>
+                <CardShelf />
+              </GridItem>
+              <GridItem xs={12} sm={6} md={3}>
+                <CardShelf />
+              </GridItem>
+              <GridItem xs={12} sm={6} md={3}>
+                <CardShelf />
+              </GridItem>
+              <GridItem xs={12} sm={6} md={3}>
+                <CardShelf />
+              </GridItem>
+              <GridItem xs={12} sm={6} md={3}>
+                <CardShelf />
+              </GridItem>
+              <GridItem xs={12} sm={6} md={3}>
+                <CardShelf />
+              </GridItem>
+
             </GridContainer>
-            <div className={classes.description}>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam expedita inventore iusto, atque beatae exercitationem dolor corrupti facere ab eos ea voluptatem voluptates quod dolores autem aliquam, obcaecati mollitia pariatur!{" "}
-              </p>
-              <br/>
-              <br/>
-            </div>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import Login from './pages/Login';
 import Registre from './pages/Registre';
 import Profile from './pages/Profile';
+import Shelf from './pages/Shelf';
 
 import LandingPage from './pages/LandingPage';
 
@@ -15,6 +16,7 @@ function Routes() {
             <Route path="/registre" exact component={Registre}></Route>
             <Route path="/landing" exact component={LandingPage}></Route>
             <Route path="/profile" exact component={Profile}></Route>
+            <Route path="/shelf" exact component={Shelf}></Route>
         </BrowserRouter>
     )
 }
