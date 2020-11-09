@@ -19,19 +19,22 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
-export default function Cards() {
+export default function Cards(props) {
+
+  const { img, title, description } = props;
+
   const classes = useStyles();
   return (
     <Card style={{width: "100%"}}>
       <img
         style={{height: "180px", width: "100%", display: "block"}}
         className={classes.imgCardTop}
-        src={imgShelf}
+        src={img}
         alt="Card-img-cap"
       />
       <CardBody>
-        <h4 className={classes.cardTitle}>The Witcher</h4>
-        <p>Melhor jogo de 2020, jogue com o bruxo Gerald de Rivia</p>
+        <h4 className={classes.cardTitle}>{title}</h4>
+        <p>{description}</p>
         <Button color="danger">Comprar</Button>
       </CardBody>
     </Card>

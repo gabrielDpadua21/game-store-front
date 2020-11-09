@@ -30,6 +30,7 @@ import styles from "../../assets/jss/material-kit-react/views/loginPage.js";
 
 import ImgBg from "../../assets/images/bg.png";
 
+
 import LogoHorizontal from '../../assets/images/logos/logo-horizontal.svg';
 
 const useStyles = makeStyles(styles);
@@ -95,7 +96,7 @@ export default function LoginPage(props) {
       >
         <div className={classes.container}>
           <GridContainer justify="center">
-            <GridItem xs={12} sm={12} md={4}>
+            <GridItem xs={12} sm={12} md={6}>
               <Card className={classes[cardAnimaton]}>
                 <form className={classes.form}>
                   <CardHeader color="custom" className={classes.cardHeader}>
