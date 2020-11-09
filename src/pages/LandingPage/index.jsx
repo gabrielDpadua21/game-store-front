@@ -51,7 +51,7 @@ export default function LandingPage(props) {
               </h4>
               <br />
               <Button
-                color="danger"
+                color="customBlue"
                 size="lg"
                 href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ref=creativetim"
                 target="_blank"
