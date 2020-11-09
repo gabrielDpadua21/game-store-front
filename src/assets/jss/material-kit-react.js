@@ -76,6 +76,10 @@ const successColor = "#4caf50";
 const infoColor = "#00acc1";
 const roseColor = "#e91e63";
 const grayColor = "#999999";
+const darkBlueColor = "#004E9A";
+const lightBlueColor = "#6096DF";
+const lightPinkColor = "#6096DF";
+const darkPinkColor = "#6096DF";
 
 const primaryBoxShadow = {
   boxShadow:
@@ -132,6 +136,11 @@ const roseCardHeader = {
   background: "linear-gradient(60deg, #ec407a, #d81b60)",
   ...roseBoxShadow
 };
+const customCardHeader = {
+  color: "#fff",
+  background: "linear-gradient(60deg, #2664da, #0027c1)",
+  ...infoBoxShadow
+}
 const cardActions = {
   margin: "0 20px 10px",
   paddingTop: "10px",
@@ -207,11 +216,16 @@ export {
   infoCardHeader,
   primaryCardHeader,
   roseCardHeader,
+  customCardHeader,
   cardActions,
   cardHeader,
   defaultBoxShadow,
   title,
   cardTitle,
   cardLink,
-  cardSubtitle
+  cardSubtitle,
+  darkBlueColor,
+  lightBlueColor,
+  lightPinkColor,
+  darkPinkColor
 };

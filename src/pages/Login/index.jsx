@@ -2,7 +2,6 @@ import React from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import Icon from "@material-ui/core/Icon";
 // @material-ui/icons
 import Email from "@material-ui/icons/Email";
 import Lock from '@material-ui/icons/Lock';
@@ -56,7 +55,7 @@ export default function LoginPage(props) {
             <GridItem xs={12} sm={12} md={4}>
               <Card className={classes[cardAnimaton]}>
                 <form className={classes.form}>
-                  <CardHeader color="info" className={classes.cardHeader}>
+                  <CardHeader color="custom" className={classes.cardHeader}>
                     <h4>Login</h4>
                   </CardHeader>
                   <p className={classes.divider}>Preencha os campos abaixo:</p>
@@ -94,7 +93,7 @@ export default function LoginPage(props) {
                     />
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
-                    <Button simple color="info" size="lg">
+                    <Button simple color="customBlue" size="lg">
                       Entrar
                     </Button>
                   </CardFooter>

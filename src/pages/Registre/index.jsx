@@ -56,7 +56,7 @@ export default function LoginPage(props) {
             <GridItem xs={12} sm={12} md={4}>
               <Card className={classes[cardAnimaton]}>
                 <form className={classes.form}>
-                  <CardHeader color="info" className={classes.cardHeader}>
+                  <CardHeader color="custom" className={classes.cardHeader}>
                     <h4>Cadastro</h4>
                   </CardHeader>
                   <p className={classes.divider}>Preencha os campos abaixo:</p>
@@ -125,7 +125,7 @@ export default function LoginPage(props) {
                     />
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
-                    <Button simple color="info" size="lg">
+                    <Button simple color="customBlue" size="lg">
                       Cadastrar
                     </Button>
                   </CardFooter>

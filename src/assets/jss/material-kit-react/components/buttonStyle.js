@@ -5,7 +5,11 @@ import {
   infoColor,
   successColor,
   warningColor,
-  dangerColor
+  dangerColor,
+  darkBlueColor,
+  lightBlueColor,
+  lightPinkColor,
+  darkPinkColor
 } from "../../material-kit-react.js";
 
 const buttonStyle = {
@@ -90,6 +94,16 @@ const buttonStyle = {
       "0 2px 2px 0 rgba(0, 188, 212, 0.14), 0 3px 1px -2px rgba(0, 188, 212, 0.2), 0 1px 5px 0 rgba(0, 188, 212, 0.12)",
     "&:hover,&:focus": {
       backgroundColor: infoColor,
+      boxShadow:
+        "0 14px 26px -12px rgba(0, 188, 212, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 188, 212, 0.2)"
+    }
+  },
+  customBlue: {
+    backgroundColor: darkBlueColor,
+    boxShadow:
+      "0 2px 2px 0 rgba(0, 188, 212, 0.14), 0 3px 1px -2px rgba(0, 188, 212, 0.2), 0 1px 5px 0 rgba(0, 188, 212, 0.12)",
+    "&:hover,&:focus": {
+      backgroundColor: darkBlueColor,
       boxShadow:
         "0 14px 26px -12px rgba(0, 188, 212, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 188, 212, 0.2)"
     }
@@ -202,6 +216,11 @@ const buttonStyle = {
     "&$info": {
       "&,&:focus,&:hover,&:visited": {
         color: infoColor
+      }
+    },
+    "&$customBlue": {
+      "&,&:focus,&:hover,&:visited": {
+        color: darkBlueColor
       }
     },
     "&$success": {
