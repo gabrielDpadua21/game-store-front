@@ -1,6 +1,8 @@
 ![](./src/assets/images/logos/logo-vertical.svg)
 
-![](./docs/store.gif)
+![](./docs/prints/print1.png)
+
+![](./docs/prints/print2.png)
 
 ## Technologies
 
