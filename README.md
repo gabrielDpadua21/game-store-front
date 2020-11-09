@@ -23,11 +23,3 @@ yarn install
 ```shell
 yarn start
 ```
-
-## Design
-
-![](./docs/prints/print1.png)
-
-![](./docs/prints/print2.png)
-
-![](./docs/prints/print3.png)

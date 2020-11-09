@@ -2,7 +2,7 @@ import React from 'react';
 
 import Routes from './Routes';
 
-import './assets/styles/global.css';
+import "./assets/scss/material-kit-react.scss";
 
 function App() {
   return (

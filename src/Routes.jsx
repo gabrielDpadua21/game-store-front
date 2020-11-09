@@ -1,16 +1,20 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 
-import Home from './pages/home';
-import Login from './pages/login';
-import Registre from './pages/registre';
+import Login from './pages/Login';
+import Registre from './pages/Registre';
+import Profile from './pages/Profile';
+
+import LandingPage from './pages/LandingPage';
 
 function Routes() {
     return (
         <BrowserRouter>
-            <Route path="/" exact component={Home}></Route>
+            <Route path="/" exact component={LandingPage}></Route>
             <Route path="/login" exact component={Login}></Route>
             <Route path="/registre" exact component={Registre}></Route>
+            <Route path="/landing" exact component={LandingPage}></Route>
+            <Route path="/profile" exact component={Profile}></Route>
         </BrowserRouter>
     )
 }
