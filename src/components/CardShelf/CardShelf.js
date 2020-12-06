@@ -5,10 +5,18 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "../Card/Card.js";
 import CardBody from "../Card/CardBody.js";
 import Button from "../CustomButtons/Button.js";
+import Slide from "@material-ui/core/Slide";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogActions from "@material-ui/core/DialogActions";
+import IconButton from "@material-ui/core/IconButton";
 
 import imagesStyles from "../../assets/jss/material-kit-react/imagesStyles.js";
-
 import { cardTitle } from "../../assets/jss/material-kit-react.js";
+// @material-ui/icons
+import Close from "@material-ui/icons/Close";
+
 
 import imgShelf from '../../assets/images/temp/game.jpeg';
 
@@ -17,15 +25,20 @@ const styles = {
   cardTitle,
 };
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="down" ref={ref} {...props} />;
+});
+
 const useStyles = makeStyles(styles);
 
 export default function Cards(props) {
-
+  const [modal, setModal] = React.useState(false);
   const { img, title, description } = props;
 
   const classes = useStyles();
   return (
-    <Card style={{width: "100%"}}>
+    <div>
+      <Card style={{width: "100%"}}>
       <img
         style={{height: "180px", width: "100%", display: "block"}}
         className={classes.imgCardTop}
@@ -35,8 +48,53 @@ export default function Cards(props) {
       <CardBody>
         <h4 className={classes.cardTitle}>{title}</h4>
         <p>{description}</p>
-        <Button color="danger">Comprar</Button>
+        <Button color="danger" onClick={() => setModal(true)}>Comprar</Button>
       </CardBody>
     </Card>
+    <Dialog
+        classes={{
+          root: classes.center,
+          paper: classes.modal
+        }}
+        open={modal}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={() => setModal(false)}
+        aria-labelledby="modal-slide-title"
+        aria-describedby="modal-slide-description"
+      >
+        <DialogTitle
+          id="classic-modal-slide-title"
+          disableTypography
+          className={classes.modalHeader}
+        >
+          <IconButton
+            className={classes.modalCloseButton}
+            key="close"
+            aria-label="Close"
+            color="inherit"
+            onClick={() => setModal(false)}
+          >
+            <Close className={classes.modalClose} />
+          </IconButton>
+        <h4 className={classes.modalTitle}>Produto: {title}</h4>
+        <h4 className={classes.modalTitle}>Valor: R$ 60.00</h4>
+        </DialogTitle>
+        <DialogContent
+          id="modal-slide-description"
+          className={classes.modalBody}
+        >
+          <h5>Deseja Finalizar compra?</h5>
+        </DialogContent>
+        <DialogActions
+          className={classes.modalFooter + " " + classes.modalFooterCenter}
+        >
+          <Button onClick={() => setModal(false)} color="danger">Cancelar</Button>
+          <Button onClick={() => setModal(false)} color="success">
+            Finalizar
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
   );
 }
