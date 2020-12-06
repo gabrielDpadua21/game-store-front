@@ -1,4 +1,5 @@
 import React from "react";
+import Axios from "axios";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -21,12 +22,6 @@ import styles from "../../assets/jss/material-kit-react/views/profilePage.js";
 
 import LogoHorizontal from '../../assets/images/logos/logo-horizontal.svg';
 
-import game1 from '../../assets/images/temp/game.jpeg';
-import game2 from '../../assets/images/temp/game2.jpeg';
-import game3 from '../../assets/images/temp/game3.jpg';
-import game4 from '../../assets/images/temp/game4.jpeg';
-
-
 import image1 from "../../assets/images/temp/banner1.jpg";
 import image2 from "../../assets/images/temp/banner2.jpg";
 
@@ -34,6 +29,18 @@ const useStyles = makeStyles(styles);
 
 export default function ShelfPage(props) {
 
+  const [data, setData] = React.useState([]);
+ 
+  React.useEffect(async () => {
+      const {data} = await handleLoadShelf();
+      setData(data);
+      console.log(data);
+  }, []);
+
+  const handleLoadShelf = async () => {
+     return await Axios.get(`${process.env.REACT_APP_API_HOST}/product`);
+  }
+  
   const settings = {
     dots: true,
     infinite: true,
@@ -83,42 +90,11 @@ export default function ShelfPage(props) {
                 </Carousel>
               </Card>
             </GridItem>
-              <GridItem xs={12} sm={6} md={4}>
-                <CardShelf img={game1} title="The witcher" description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"/>
-              </GridItem>
-              <GridItem xs={12} sm={6} md={4}>
-                <CardShelf img={game3} title="Tomb Raider" description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"/>
-              </GridItem>
-              <GridItem xs={12} sm={6} md={4}>
-                <CardShelf img={game2} title="Rise of the Tomb Raider" description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"/>
-              </GridItem>
-              <GridItem xs={12} sm={6} md={4}>
-                <CardShelf img={game4} title="Shadow of the Tomb Raider" description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"/>
-              </GridItem>
-              <GridItem xs={12} sm={6} md={4}>
-                <CardShelf img={game1} title="The witcher" description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"/>
-              </GridItem>
-              <GridItem xs={12} sm={6} md={4}>
-                <CardShelf img={game3} title="Tomb Raider" description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"/>
-              </GridItem>
-              <GridItem xs={12} sm={6} md={4}>
-                <CardShelf img={game2} title="Rise of the Tomb Raider" description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"/>
-              </GridItem>
-              <GridItem xs={12} sm={6} md={4}>
-                <CardShelf img={game4} title="Shadow of the Tomb Raider" description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"/>
-              </GridItem>
-              <GridItem xs={12} sm={6} md={4}>
-                <CardShelf img={game1} title="The witcher" description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"/>
-              </GridItem>
-              <GridItem xs={12} sm={6} md={4}>
-                <CardShelf img={game3} title="Tomb Raider" description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"/>
-              </GridItem>
-              <GridItem xs={12} sm={6} md={4}>
-                <CardShelf img={game2} title="Rise of the Tomb Raider" description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"/>
-              </GridItem>
-              <GridItem xs={12} sm={6} md={4}>
-                <CardShelf img={game4} title="Shadow of the Tomb Raider" description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"/>
-              </GridItem>
+              {data.map(item =>(
+                <GridItem xs={12} sm={6} md={4}>
+                  <CardShelf img={item.imageUri} title={item.name} description={item.description} price={item.price}/>
+                </GridItem>
+              ))}
             </GridContainer>
           </div>
         </div>

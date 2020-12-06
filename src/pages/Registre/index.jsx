@@ -66,7 +66,7 @@ export default function LoginPage(props) {
       return;
     }
 
-    Axios.post(`http://localhost:3000/users`, {name, email, phone, password})
+    Axios.post(`${process.env.REACT_APP_API_HOST}/users`, {name, email, phone, password})
     .then(response => {
       history.push('/shelf');
     })

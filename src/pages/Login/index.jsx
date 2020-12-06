@@ -47,7 +47,7 @@ export default function LoginPage(props) {
        return;
      }
 
-     Axios.post(`http://localhost:3000/users/login`, {email, password})
+     Axios.post(`${process.env.REACT_APP_API_HOST}/users/login`, {email, password})
       .then(response => {
         const { data } = response;
         if(data.email === "error") {

@@ -18,7 +18,7 @@ import { cardTitle } from "../../assets/jss/material-kit-react.js";
 import Close from "@material-ui/icons/Close";
 
 
-import imgShelf from '../../assets/images/temp/game.jpeg';
+import defaultImage from '../../assets/images/temp/control.jpg';
 
 const styles = {
   ...imagesStyles,
@@ -33,7 +33,7 @@ const useStyles = makeStyles(styles);
 
 export default function Cards(props) {
   const [modal, setModal] = React.useState(false);
-  const { img, title, description } = props;
+  const { img, title, description, price } = props;
 
   const classes = useStyles();
   return (
@@ -42,7 +42,7 @@ export default function Cards(props) {
       <img
         style={{height: "180px", width: "100%", display: "block"}}
         className={classes.imgCardTop}
-        src={img}
+        src={ img ? img : defaultImage}
         alt="Card-img-cap"
       />
       <CardBody>
@@ -78,7 +78,7 @@ export default function Cards(props) {
             <Close className={classes.modalClose} />
           </IconButton>
         <h4 className={classes.modalTitle}>Produto: {title}</h4>
-        <h4 className={classes.modalTitle}>Valor: R$ 60.00</h4>
+        <h4 className={classes.modalTitle}>Valor: R$ {price}</h4>
         </DialogTitle>
         <DialogContent
           id="modal-slide-description"
