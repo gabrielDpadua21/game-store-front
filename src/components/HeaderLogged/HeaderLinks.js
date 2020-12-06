@@ -9,7 +9,7 @@ import ListItem from "@material-ui/core/ListItem";
 import Tooltip from "@material-ui/core/Tooltip";
 
 // @material-ui/icons
-import { AccountCircle, AddCircle } from "@material-ui/icons";
+import { AccountCircle, AddCircle, ShoppingCart } from "@material-ui/icons";
 
 // core components
 import Button from "../../components/CustomButtons/Button.js";
@@ -38,6 +38,14 @@ export default function HeaderLinks(props) {
           className={classes.navLink}
         >
           <AccountCircle className={classes.icons} /> Perfil
+        </Button>
+        <Button
+          href="/requests"
+          color="transparent"
+          target="_blank"
+          className={classes.navLink}
+        >
+          <ShoppingCart className={classes.icons} /> Meus Pedidos
         </Button>
       </ListItem>
     </List>
