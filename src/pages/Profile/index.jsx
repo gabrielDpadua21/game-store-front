@@ -13,7 +13,7 @@ import GridItem from "../../components/Grid/GridItem.js";
 import HeaderLinks from "../../components/HeaderLogged/HeaderLinks.js";
 import Parallax from "../../components/Parallax/Parallax.js";
 
-import profile from "../../assets/images/temp/profile.png";
+import profile from "../../assets/images/temp/profile.jpg";
 
 import styles from "../../assets/jss/material-kit-react/views/profilePage.js";
 
