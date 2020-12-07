@@ -20,6 +20,19 @@ const useStyles = makeStyles(styles);
 
 export default function HeaderLinks(props) {
   const classes = useStyles();
+
+  const [data, setData] = React.useState([]);
+
+  React.useEffect( async() => {
+      const name = await handleUser();
+      setData(name);
+  }, []);
+
+  const handleUser = async() => {
+    const myName = await localStorage.getItem('userName');
+    return [{"name": myName}];
+  }
+
   return (
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
@@ -29,7 +42,7 @@ export default function HeaderLinks(props) {
           target="_blank"
           className={classes.navLink}
         >
-          Ola, Gabriel
+          Ola, { data[0] ? data[0].name : 'Gamer'}
         </Button>
         <Button
           href="/profile"

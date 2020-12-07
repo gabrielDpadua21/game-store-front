@@ -47,13 +47,16 @@ export default function LoginPage(props) {
        return;
      }
 
-     Axios.post(`${process.env.REACT_APP_API_HOST}/users/login`, {email, password})
+     Axios.post(`${process.env.REACT_APP_API_HOST}/login`, {email, password})
       .then(response => {
         const { data } = response;
         if(data.email === "error") {
             toast.error("Senha inválida!!!");
             return;
         }
+
+        localStorage.setItem('userId', data.id);
+        localStorage.setItem('userName', data.name);
 
         history.push('/shelf');
 

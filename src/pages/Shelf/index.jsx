@@ -34,7 +34,6 @@ export default function ShelfPage(props) {
   React.useEffect(async () => {
       const {data} = await handleLoadShelf();
       setData(data);
-      console.log(data);
   }, []);
 
   const handleLoadShelf = async () => {
@@ -92,7 +91,7 @@ export default function ShelfPage(props) {
             </GridItem>
               {data.map(item =>(
                 <GridItem xs={12} sm={6} md={4}>
-                  <CardShelf img={item.imageUri} title={item.name} description={item.description} price={item.price}/>
+                  <CardShelf img={item.imageUri} title={item.name} description={item.description} price={item.price} id={item.id}/>
                 </GridItem>
               ))}
             </GridContainer>

@@ -1,6 +1,8 @@
 import React from "react";
+import Axios from "axios";
 // material-ui components
 import { makeStyles } from "@material-ui/core/styles";
+import { toast, ToastContainer } from 'react-toastify';
 // core components
 import Card from "../Card/Card.js";
 import CardBody from "../Card/CardBody.js";
@@ -33,11 +35,24 @@ const useStyles = makeStyles(styles);
 
 export default function Cards(props) {
   const [modal, setModal] = React.useState(false);
-  const { img, title, description, price } = props;
+  const { img, title, description, price, id } = props;
+
+  const handleSubmitOrder = (product) => {
+    const userId = localStorage.getItem('userId');
+    Axios.post(`${process.env.REACT_APP_API_HOST}/orders`, {productId: product, userId: userId})
+    .then(response =>{
+      console.log(response);
+    }).catch(error => {
+      console.log(error);
+      toast.error('PRODUTO INDISPONIVEL NO MOMENTO!!!');
+    })
+    setModal(false);
+  } 
 
   const classes = useStyles();
   return (
     <div>
+      <ToastContainer />
       <Card style={{width: "100%"}}>
       <img
         style={{height: "180px", width: "100%", display: "block"}}
@@ -90,7 +105,7 @@ export default function Cards(props) {
           className={classes.modalFooter + " " + classes.modalFooterCenter}
         >
           <Button onClick={() => setModal(false)} color="danger">Cancelar</Button>
-          <Button onClick={() => setModal(false)} color="success">
+          <Button onClick={() => handleSubmitOrder(id)} color="success">
             Finalizar
           </Button>
         </DialogActions>

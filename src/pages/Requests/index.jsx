@@ -1,4 +1,5 @@
 import React from "react";
+import Axios from "axios";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -32,6 +33,28 @@ export default function RequestsPage(props) {
     classes.imgRoundedCircle,
     classes.imgFluid
   );
+
+  const [requests, setRequests] = React.useState([]);
+
+  React.useEffect(async () => {
+    const {data} = await handleLoadShelf();
+
+    console.log(data);
+
+    const userId = localStorage.getItem('userId');
+
+    const filterData = await data.filter(item => {
+      return item.client.id == userId;
+    });
+
+    setRequests(filterData);
+
+}, []);
+
+const handleLoadShelf = async () => {
+   return await Axios.get(`${process.env.REACT_APP_API_HOST}/orders`);
+}
+
   return (
     <div>
       <Header
@@ -52,33 +75,21 @@ export default function RequestsPage(props) {
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={6}>
                 <List>
+                  {requests ? requests.map(item =>(
                     <ListItem>
                         <ListItemAvatar>
-                        <Avatar>
-                            <AttachMoneyIcon />
-                        </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText primary="The witcher" secondary="Jan 9, 2014" />
-                        <Button color="danger">PENDENTE</Button>
+                            <Avatar>
+                              <AttachMoneyIcon />
+                            </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText primary={item.items[0].product.name} secondary={item.createdAt} />
+                          { item.orderStatus == 2 ? <Button color="danger">PENDENTE</Button> : <Button color="success">PAGO</Button> }
                     </ListItem>
-                    <ListItem>
-                        <ListItemAvatar>
-                        <Avatar>
-                            <AttachMoneyIcon />
-                        </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText primary="Tomb Raider" secondary="Jan 7, 2014" />
-                        <Button color="danger">PENDENTE</Button>
-                    </ListItem>
-                    <ListItem>
-                        <ListItemAvatar>
-                        <Avatar>
-                            <AttachMoneyIcon />
-                        </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText primary="Batman" secondary="July 20, 2014" />
-                        <Button color="success">PAGO</Button>
-                    </ListItem>
+                  )) : <ListItem>
+                    <h1>
+                      NENHUM PEDIDO
+                    </h1>
+                  </ListItem>}
                 </List>
               </GridItem>
             </GridContainer>

@@ -9,6 +9,8 @@ import Requests from './pages/Requests';
 
 import LandingPage from './pages/LandingPage';
 
+import ProductPage from './pages/Product';
+
 function Routes() {
     return (
         <BrowserRouter>
@@ -19,6 +21,7 @@ function Routes() {
             <Route path="/profile" exact component={Profile}></Route>
             <Route path="/shelf" exact component={Shelf}></Route>
             <Route path="/requests" exact component={Requests}></Route>
+            <Route path="/product" exact component={ProductPage}></Route>
         </BrowserRouter>
     )
 }

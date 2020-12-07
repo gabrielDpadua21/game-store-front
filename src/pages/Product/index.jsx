@@ -14,8 +14,6 @@ import People from "@material-ui/icons/People";
 import Lock from '@material-ui/icons/Lock';
 import Phone from '@material-ui/icons/Phone';
 // core components
-import Header from "../../components/Header/Header.js";
-import HeaderLinks from "../../components/Header/HeaderLinks.js";
 import Footer from "../../components/Footer/Footer.js";
 import GridContainer from "../../components/Grid/GridContainer.js";
 import GridItem from "../../components/Grid/GridItem.js";
@@ -30,22 +28,19 @@ import styles from "../../assets/jss/material-kit-react/views/loginPage.js";
 
 import ImgBg from "../../assets/images/bg.png";
 
-
-import LogoHorizontal from '../../assets/images/logos/logo-horizontal.svg';
-
 const useStyles = makeStyles(styles);
 
-export default function LoginPage(props) {
+export default function ProductPage(props) {
   
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
 
   const history = useHistory();
 
   const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [phone, setPhone] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [password2, setPassword2] = React.useState('');
+  const [description, setDescription] = React.useState('');
+  const [price, setPrice] = React.useState('');
+  const [imageUri, setUrl] = React.useState('');
+  const [categoryId, setCategory] = React.useState('');
 
   setTimeout(function() {
     setCardAnimation("");
@@ -56,22 +51,17 @@ export default function LoginPage(props) {
   const { ...rest } = props;
 
   const handleSubmit = () => {
-    if(!name || !email || !password || !password2) {
+    if(!name || !description || !price || !categoryId) {
       toast.error('Preencha os campos obrigatórios * para efetuar cadastro!!!');
       return;
     }
 
-    if(password !== password2) {
-      toast.error('Senhas não coincidem!!!');
-      return;
-    }
-
-    Axios.post(`${process.env.REACT_APP_API_HOST}/users`, {name, email, phone, password})
+    Axios.post(`${process.env.REACT_APP_API_HOST}/product`, {name, description, price, imageUri, categoryId})
     .then(response => {
-      history.push('/login');
+        toast.success('Produto cadastrado com sucesso!!!');
     })
     .catch(error => {
-       toast.error('Erro ao cadastrar usuário ou usuario ja existe!!!');
+       toast.error('Erro ao cadastrar produto!!!');
     })
     
   }
@@ -79,13 +69,6 @@ export default function LoginPage(props) {
   return (
     <div>
       <ToastContainer />
-      <Header
-        absolute
-        color="transparent"
-        brand={LogoHorizontal}
-        rightLinks={<HeaderLinks />}
-        {...rest}
-      />
       <div
         className={classes.pageHeader}
         style={{
@@ -105,7 +88,7 @@ export default function LoginPage(props) {
                   <p className={classes.divider}>Preencha os campos abaixo:</p>
                   <CardBody>
                     <CustomInput
-                        labelText="Nome *"
+                        labelText="Nome do Produto"
                         id="name"
                         formControlProps={{
                             fullWidth: true
@@ -121,14 +104,14 @@ export default function LoginPage(props) {
                         }}
                     />
                     <CustomInput
-                      labelText="Email *"
-                      id="email"
+                      labelText="Descricao do Produto *"
+                      id="description"
                       formControlProps={{
                         fullWidth: true
                       }}
                       inputProps={{
                         type: "email",
-                        onChange: (event) => setEmail(event.target.value),
+                        onChange: (event) => setDescription(event.target.value),
                         endAdornment: (
                           <InputAdornment position="end">
                             <Email className={classes.inputIconsColor} />
@@ -137,14 +120,14 @@ export default function LoginPage(props) {
                       }}
                     />
                     <CustomInput
-                      labelText="Telefone"
-                      id="phone"
+                      labelText="Preco"
+                      id="price"
                       formControlProps={{
                         fullWidth: true
                       }}
                       inputProps={{
                         type: "number",
-                        onChange: (event) => setPhone(event.target.value),
+                        onChange: (event) => setPrice(event.target.value),
                         endAdornment: (
                           <InputAdornment position="end">
                             <Phone className={classes.inputIconsColor} />
@@ -153,14 +136,14 @@ export default function LoginPage(props) {
                       }}
                     />
                     <CustomInput
-                      labelText="Senha *"
-                      id="password"
+                      labelText="Url da imagem do produto "
+                      id="url"
                       formControlProps={{
                         fullWidth: true
                       }}
                       inputProps={{
-                        type: "password",
-                        onChange: (event) => setPassword(event.target.value),
+                        type: "text",
+                        onChange: (event) => setUrl(event.target.value),
                         endAdornment: (
                           <InputAdornment position="end">
                             <Lock className={classes.inputIconsColor}/>
@@ -170,14 +153,14 @@ export default function LoginPage(props) {
                       }}
                     />
                      <CustomInput
-                      labelText="Confirmar senha *"
-                      id="password2"
+                      labelText="Categoria"
+                      id="category"
                       formControlProps={{
                         fullWidth: true
                       }}
                       inputProps={{
-                        type: "password",
-                        onChange: (event) => setPassword2(event.target.value),
+                        type: "number",
+                        onChange: (event) => setCategory(event.target.value),
                         endAdornment: (
                           <InputAdornment position="end">
                             <Lock className={classes.inputIconsColor}/>
