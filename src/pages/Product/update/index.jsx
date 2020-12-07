@@ -14,19 +14,19 @@ import People from "@material-ui/icons/People";
 import Lock from '@material-ui/icons/Lock';
 import Phone from '@material-ui/icons/Phone';
 // core components
-import Footer from "../../components/Footer/Footer.js";
-import GridContainer from "../../components/Grid/GridContainer.js";
-import GridItem from "../../components/Grid/GridItem.js";
-import Button from "../../components/CustomButtons/Button.js";
-import Card from "../../components/Card/Card.js";
-import CardBody from "../../components/Card/CardBody.js";
-import CardHeader from "../../components/Card/CardHeader.js";
-import CardFooter from "../../components/Card/CardFooter.js";
-import CustomInput from "../../components/CustomInput/CustomInput.js";
+import Footer from "../../../components/Footer/Footer.js";
+import GridContainer from "../../../components/Grid/GridContainer.js";
+import GridItem from "../../../components/Grid/GridItem.js";
+import Button from "../../../components/CustomButtons/Button.js";
+import Card from "../../../components/Card/Card.js";
+import CardBody from "../../../components/Card/CardBody.js";
+import CardHeader from "../../../components/Card/CardHeader.js";
+import CardFooter from "../../../components/Card/CardFooter.js";
+import CustomInput from "../../../components/CustomInput/CustomInput.js";
 
-import styles from "../../assets/jss/material-kit-react/views/loginPage.js";
+import styles from "../../../assets/jss/material-kit-react/views/loginPage.js";
 
-import ImgBg from "../../assets/images/bg.png";
+import ImgBg from "../../../assets/images/bg.png";
 
 const useStyles = makeStyles(styles);
 
@@ -36,6 +36,7 @@ export default function ProductPage(props) {
 
   const history = useHistory();
 
+  const [id, setId] = React.useState(null);
   const [name, setName] = React.useState('');
   const [description, setDescription] = React.useState('');
   const [price, setPrice] = React.useState('');
@@ -51,14 +52,14 @@ export default function ProductPage(props) {
   const { ...rest } = props;
 
   const handleSubmit = () => {
-    if(!name || !description || !price || !categoryId) {
+    if(!id || !name || !description || !price || !categoryId) {
       toast.error('Preencha os campos obrigatórios * para efetuar cadastro!!!');
       return;
     }
 
-    Axios.post(`${process.env.REACT_APP_API_HOST}/product`, {name, description, price, imageUri, categoryId})
+    Axios.put(`${process.env.REACT_APP_API_HOST}/product/${id}`, {name, description, price, imageUri, categoryId})
     .then(response => {
-        toast.success('Produto cadastrado com sucesso!!!');
+        toast.success('Produto atualizado com sucesso!!!');
     })
     .catch(error => {
        toast.error('Erro ao cadastrar produto!!!');
@@ -83,10 +84,26 @@ export default function ProductPage(props) {
               <Card className={classes[cardAnimaton]}>
                 <form className={classes.form}>
                   <CardHeader color="custom" className={classes.cardHeader}>
-                    <h4>Cadastro</h4>
+                    <h4>ATUALIZAR PRODUTO</h4>
                   </CardHeader>
                   <p className={classes.divider}>Preencha os campos abaixo:</p>
                   <CardBody>
+                  <CustomInput
+                        labelText="Id do Produto"
+                        id="id"
+                        formControlProps={{
+                            fullWidth: true
+                        }}
+                        inputProps={{
+                            type: "number",
+                            onChange: (event) => setId(event.target.value),
+                            endAdornment: (
+                                <InputAdornment position="end">
+                                    <People className={classes.inputIconsColor} />
+                                </InputAdornment>
+                            )
+                        }}
+                    />
                     <CustomInput
                         labelText="Nome do Produto"
                         id="name"
@@ -172,7 +189,7 @@ export default function ProductPage(props) {
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
                     <Button simple color="customBlue" size="lg" onClick={handleSubmit}>
-                      Cadastrar
+                      Atualizar
                     </Button>
                   </CardFooter>
                 </form>

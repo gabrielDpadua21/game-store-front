@@ -9,7 +9,9 @@ import Requests from './pages/Requests';
 
 import LandingPage from './pages/LandingPage';
 
-import ProductPage from './pages/Product';
+import ProductCreate from './pages/Product/create';
+import ProductUpdate from './pages/Product/update';
+import ProductDelete from './pages/Product/delete';
 
 function Routes() {
     return (
@@ -21,7 +23,9 @@ function Routes() {
             <Route path="/profile" exact component={Profile}></Route>
             <Route path="/shelf" exact component={Shelf}></Route>
             <Route path="/requests" exact component={Requests}></Route>
-            <Route path="/product" exact component={ProductPage}></Route>
+            <Route path="/product/create" exact component={ProductCreate}></Route>
+            <Route path="/product/update" exact component={ProductUpdate}></Route>
+            <Route path="/product/delete" exact component={ProductDelete}></Route>
         </BrowserRouter>
     )
 }
